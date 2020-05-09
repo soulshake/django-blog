@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
+from django.core.paginator import Paginator
 
 # Create your views here.
-def post_list(request):
-	posts = Post.objects.all() #crée l'objet liste de posts à partir du modèle Post
-	return render(request,'blog/post_list.html', {'posts':posts}) #passe posts en argument au template
+def post_list(request,pageNb=1):
+	posts = Post.objects.all().order_by('published_date') #crée l'objet liste de posts à partir du modèle Post
+	pages = Paginator(posts,3)
+	posts = pages.page(pageNb)
+	return render(request,'blog/post_list.html', {'posts':posts, 'pageNb':pageNb.next_page_number}) #passe posts en argument au template
 
 
 def post_detail(request,pk):

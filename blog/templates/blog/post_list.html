@@ -27,5 +27,6 @@
 			</div>
 		</div>
 	{% endfor %}
+	<a href="{% url 'post_list' pageNb=pageNb %}"><button class="btn">Next page</button></a>
 	</div>
 {% endblock %}
