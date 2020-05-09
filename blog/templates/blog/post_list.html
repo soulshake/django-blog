@@ -8,8 +8,11 @@
 				<a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
 			</h2>
 			<div class="card-body">
-				<h4 class="card-subtitle mb-2 text-muted">by 
-					{{ post.author }}, published the {{ post.published_date }}
+				<h4 class="card-subtitle mb-2 text-muted">
+					by {{ post.author }}
+					{% if post.published_date %}
+						, published the {{ post.published_date }}
+					{% endif %}
 				</h4>
 				<p class='card-text'>
 					{{ post.text|linebreaksbr }}
