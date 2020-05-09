@@ -9,7 +9,9 @@ def post_list(request,pageNb=1):
 	posts = Post.objects.all().order_by('published_date') #crée l'objet liste de posts à partir du modèle Post
 	pages = Paginator(posts,3)
 	posts = pages.page(pageNb)
-	return render(request,'blog/post_list.html', {'posts':posts, 'pageNb':pageNb.next_page_number}) #passe posts en argument au template
+	previous = pageNb - 1
+	next = pageNb + 1
+	return render(request,'blog/post_list.html', {'posts':posts, 'pageNb':pageNb, 'previous': previous, 'next':next}) #passe posts en argument au template
 
 
 def post_detail(request,pk):

@@ -27,6 +27,12 @@
 			</div>
 		</div>
 	{% endfor %}
-	<a href="{% url 'post_list' pageNb=pageNb %}"><button class="btn">Next page</button></a>
+
+	{% if posts.has_previous %}
+	<a href="{% url 'post_list' pageNb=previous %}"><button class="btn">Previous</button></a>
+	{% endif %}
+	{% if posts.has_next %}
+	<a href="{% url 'post_list' pageNb=next %}"><button class="btn">Next page</button></a>
+	{% endif %}
 	</div>
 {% endblock %}
