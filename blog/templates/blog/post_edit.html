@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	
+		<div class="card w-50">
+			<h2 class="card-header">
+				New Post:
+			</h2>
+			<div class="card-body">
+					<form method="POST" class='post-form'>{% csrf_token %}
+						{{ form.as_p }}
+						<button type='submit' class='btn btn-secondary'>Save</button>
+					</form>
+			</div>
+		</div>
+		<a href="/"><button type="button" class="btn btn-secondary">Back to list</button></a>
+{% endblock %}

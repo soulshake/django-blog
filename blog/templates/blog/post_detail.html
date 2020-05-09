@@ -3,10 +3,16 @@
 {% block content %}
 	
 		<div class="card w-50">
+				
+			<!--publi-->
 			<h2 class="card-header">
 				{{ post.title }}
+				<!--#bouton pour éditer-->
+					<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil float-right"></span></a>
+			
 			</h2>
 			<div class="card-body">
+				
 				<h4 class="card-subtitle mb-2 text-muted">by 
 					{{ post.author }}
 					{% if post.published_date %}
