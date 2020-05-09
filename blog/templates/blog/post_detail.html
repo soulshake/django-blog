@@ -8,7 +8,9 @@
 			<h2 class="card-header">
 				{{ post.title }}
 				<!--#bouton pour éditer-->
+				{% if user.is_authenticated %}
 					<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil float-right"></span></a>
+				{% endif %}
 			
 			</h2>
 			<div class="card-body">
