@@ -1,21 +1,40 @@
+{% load static %}
+
 <html>
     <head>
         <title>Django Girls blog</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     </head>
     <body>
         <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
+            <h1 style="text-align: center; padding:10px"><a href="/">Django Girls Blog</a></h1>
         </div>
 
-        <div>
-        	<ul>
+        <div class="container">
+  		<div class="row">
+  		<div class="col">
+  			<div class="d-flex flex-wrap">
 	        	{% for post in posts %}
-					<h3><a href="/">{{ post.title }}</a></h3>
-					<i>{{ post.author }} published the {{ post.published_date }}</i>
-					<p>{{ post.text|linebreaksbr }}</p>
-					<hr/>
+		        	<div class="card w-50">
+						<h2 class="card-header">
+							<a href="/">{{ post.title }}</a>
+						</h2>
+						<div class="card-body">
+							<h4 class="card-subtitle mb-2 text-muted">by 
+								{{ post.author }}, published the {{ post.published_date }}
+							</h4>
+							<p class='card-text'>
+								{{ post.text|linebreaksbr }}
+							</p>
+						</div>
+					</div>
 	        	{% endfor %}
-        	</ul>
+	        </div>
+	        </div>
+	       </div>
         </div>
     </body>
 </html>
