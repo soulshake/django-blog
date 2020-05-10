@@ -1,0 +1,23 @@
+{% load static %}
+
+{{message}}
+
+{% with 'pokecode/'|add:true.image.url as image_url %}
+	<img src="{% static image_url %}" style="width:100px;height:100px"/>
+{% endwith %}
+<br/>
+{% with 'pokecode/'|add:true.music.url as music_url %}
+	<audio controls>	
+		<source src="{% static music_url %}" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+{% endwith %}
+<br/>
+<form action="/" method="POST">
+	{% csrf_token %}
+		{% for choice in choices %}
+		<input type="radio" name="userInput" value="{{choice}}">{{choice}}</input>
+		<br/>
+		{% endfor %}
+		<button type="submit">Envoyer</button>
+</form>

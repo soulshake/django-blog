@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-    'pokecode.apps.PokecodeConfig'
+    'pokecode.apps.PokecodeConfig',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_DIRS = (
+    "pokecode/templates",
+)
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
